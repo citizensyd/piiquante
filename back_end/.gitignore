@@ -1,0 +1,8 @@
+# Dossier contenant les modules Node.js installés via npm
+/node_modules
+
+# Dossier contenant les images
+/images
+
+#Exclusion du fichier lock des dépendances
+ package-lock.json
