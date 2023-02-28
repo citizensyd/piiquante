@@ -2,6 +2,7 @@ const express = require('express'); // Importe le module express pour créer et 
 const mongoose = require('mongoose'); // Importe le module mongoose pour interagir avec une base de données MongoDB.
 const bodyParser = require('body-parser'); // Importe le module body-parser pour extraire les données d'un corps de requête HTTP.
 const path = require('path'); // Importe le module path pour résoudre des chemins de fichiers.
+const dotenv = require('dotenv'); // Importer le module dotenv qui permet de charger des variables d'environnement depuis un fichier .env
 const helmet = require('helmet'); // Importe le module helmet pour améliorer la sécurité de l'application.
 const rateLimit = require("express-rate-limit"); // Importe le module express-rate-limit pour limiter le nombre de requêtes sur l'API.
 
@@ -10,14 +11,14 @@ const saucesRoutes = require('./routes/sauce'); // Importe les routes pour la ge
 
 const app = express(); // Crée une instance de l'application express.
 
-(async () => { // Utilisation d'une fonction asynchrone pour se connecter à la base de données MongoDB.
-  try {
-    await mongoose.connect("mongodb+srv://citizensyd:3ehQr6fkYudXHoMe@cluster0.ezfpv.mongodb.net/?retryWrites=true&w=majority"); // Connexion à la base de données MongoDB avec les identifiants d'accès.
-    console.log("Connexion réussie avec la base de donnée"); // Affichage d'un message de confirmation de connexion.
-  } catch (error) {
-    console.log(error.message); // Affichage de l'erreur de connexion en cas d'échec.
-  }
-})();
+dotenv.config(); // Charger les variables d'environnement depuis un fichier .env à la racine du projet
+
+mongoose.connect(process.env.MONGODB_URI, { // Se connecter à la base de données MongoDB en utilisant l'URI spécifié dans la variable d'environnement MONGODB_URI
+  useNewUrlParser: true, // Options de configuration pour la connexion MongoDB
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('MongoDB connected')) // Afficher un message de confirmation si la connexion réussit
+  .catch((err) => console.log(err)); // Afficher l'erreur si la connexion échoue
 
 app.use((req, res, next) => { // Middleware pour gérer les autorisations de CORS.
     res.setHeader('Access-Control-Allow-Origin', '*');

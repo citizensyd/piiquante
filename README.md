@@ -61,3 +61,14 @@ Votre présentation devrait durer 15 minutes (+/- 5 minutes). Puisque le respect
 - Mettre en œuvre des opérations CRUD de manière sécurisée
 - Stocker des données de manière sécurisée
 - Implémenter un modèle logique de données conformément à la réglementation
+
+**Guide de connexion à MongoDB**
+**Prérequis**
+
+- Pour vous connecter à MongoDB, vous devrez spécifier votre nom d'utilisateur et votre mot de passe dans un fichier .env. Si vous ne disposez pas encore d'un fichier .env, vous devrez le créer dans le dossier racine de votre projet. Vous pouvez le faire en utilisant un éditeur de texte comme Notepad++ ou Visual Studio Code.
+
+- Dans le fichier .env, vous devrez ajouter les lignes suivantes :
+
+MONGODB_URI=mongodb+srv://USER:PASSWORD@cluster0.ezfpv.mongodb.net/?retryWrites=true&w=majority
+
+- Remplacez USER et PASSWORD par votre nom d'utilisateur et votre mot de passe MongoDB.

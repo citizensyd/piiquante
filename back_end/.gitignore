@@ -4,5 +4,8 @@
 # Dossier contenant les images
 /images
 
-#Exclusion du fichier lock des dépendances
+#Fichier lock des dépendances
  package-lock.json
+
+#Fichier de variable d'environnement de connection à mongoDB
+.env
